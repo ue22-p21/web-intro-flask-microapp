@@ -29,7 +29,8 @@ function armMouseFollower(image_id, x_id, y_id, area_id) {
         }
     }
  }
-// compute mouse coordinates relative to a DOM elt
+
+// position of the element inside the document
 function relativePosition(elt) {
     if (typeof (elt.offsetParent) != "undefined") {
         let pos_x = 0;
@@ -44,13 +45,7 @@ function relativePosition(elt) {
     }
  }
 
-function showCoordinates(event, image_id, x_id, y_id) {
-    let [pos_x, pos_y] = getRelativeMouse(event, image_id);
-    document.getElementById(x_id).innerHTML = pos_x;
-    document.getElementById(y_id).innerHTML = pos_y;
-    return [pos_x, pos_y];
-}
-
+// compute mouse coordinates relative to a DOM elt
 function getRelativeMouse(event, image_id) {
     let elt = document.getElementById(image_id);
     let [rel_x, rel_y] = relativePosition(elt);
@@ -70,6 +65,19 @@ function getRelativeMouse(event, image_id) {
     return [pos_x - rel_x, pos_y - rel_y];
  }
 
+// like getRelativeMouse, but displays result
+// in the x_id and y_id DOM elements
+function showCoordinates(event, image_id, x_id, y_id) {
+    let [pos_x, pos_y] = getRelativeMouse(event, image_id);
+    document.getElementById(x_id).innerHTML = pos_x;
+    document.getElementById(y_id).innerHTML = pos_y;
+    return [pos_x, pos_y];
+}
+
+// computes current mouse position, and
+// sends back to server a request to compute area
+// wrt the (x1, y1) initial point
+// the result is displayed in the aread_id DOM element
 function showArea(event, image_id, area_id, x1, y1) {
     let [x2, y2] = getRelativeMouse(event, image_id);
 
