@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import json
 
 from .images import Image, Images
 
@@ -15,4 +16,5 @@ def image_view(id):
     return render_template("image.html", id=id, image=image)
 
 def image_api_area(id, x1, y1, x2, y2):
-    pass
+    result = {'area': Image(id).area(x1, y1, x2, y2)}
+    return json.dumps(result)

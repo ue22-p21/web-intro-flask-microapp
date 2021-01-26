@@ -18,4 +18,9 @@ def create_app():
         else:
             return image_view(id)
 
+    @app.route('/api/image/area/<id>/<x1>/<y1>/<x2>/<y2>')
+    def image_area(id, x1, y1, x2, y2):
+        args = (float(x) for x in (x1, y1, x2, y2))
+        return image_api_area(id, *args)
+
     return app
