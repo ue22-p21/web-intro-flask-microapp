@@ -1,6 +1,6 @@
 from flask import Flask
 
-from .views import index_view, image_view, images_view, image_api_area
+from .views import image_view, images_view, image_api_area
 
 def create_app():
     # ici __name__ vaut 'microapp'
@@ -8,15 +8,11 @@ def create_app():
 
     @app.route('/')
     def homepage():
-        return index_view()
+        return images_view()
 
-    @app.route('/image/')
     @app.route('/image/<id>')
-    def image(id=None):
-        if not id:
-            return images_view()
-        else:
-            return image_view(id)
+    def image(id):
+        return image_view(id)
 
     @app.route('/api/image/area/<id>/<x1>/<y1>/<x2>/<y2>')
     def image_area(id, x1, y1, x2, y2):

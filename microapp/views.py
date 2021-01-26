@@ -1,10 +1,7 @@
 from flask import Flask, render_template
 import json
 
-from .images import Image, Images
-
-def index_view():
-    return render_template("index.html")
+from .model import Image, Images
 
 def images_view():
     images = Images()

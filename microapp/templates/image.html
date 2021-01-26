@@ -1,13 +1,27 @@
 <html>
     <head>
         <title>{{id}}</title>
+        <link rel="stylesheet" href="/static/css/image.css">
+        <script src="/static/js/image.js"></script>
     </head>
     <body>
+        <a href="/">back to welcome page</a>
+        <br>
         {% if image %}
             <h1>this is the page for image {{id}}</h1>
-            <img src="/static/images/{{id}}.png">
+            <img id="{{id}}" class="image" src="/static/images/{{id}}.png">
+            <br>
+            x-mouse <span id="x-pos">x</span>
+            y-mouse <span id="y-pos">y</span>
+            area <span id="area">area</span>
         {% else %}
             <h1>image {{id}} was not found</h1>
         {% endif %}
+        <script>
+            function init() {
+                armMouseFollower("{{id}}", "x-pos", "y-pos", "area");
+            }
+            window.onload = init;
+        </script>
     </body>
 </html>
