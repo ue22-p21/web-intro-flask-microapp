@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>available images</title>
+    </head>
+    <body>
+        <h1>this is the home page for images</h1>
+
+        <ul>
+        {% for id in ids %}
+            <li><a href="/image/{{id}}">{{id}}</li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>
