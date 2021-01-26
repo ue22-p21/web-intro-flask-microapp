@@ -1,6 +1,8 @@
 from flask import Flask, render_template
 import json
 
+# here we could also write
+# from microapp.model import ...
 from .model import Image, Images
 
 def images_view():

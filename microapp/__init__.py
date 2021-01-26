@@ -1,5 +1,7 @@
 from flask import Flask
 
+# here we could also write
+# from microapp.views import ...
 from .views import image_view, images_view, image_api_area
 
 def create_app():
