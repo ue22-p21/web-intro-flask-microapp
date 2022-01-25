@@ -8,14 +8,21 @@ Une minuscule petite app en Flask pour démontrer les aller-retour entre navigat
 
 * lancer le serveur
 
-```
-pip install Flask
-export FLASK_APP=microapp
-export FLASK_ENV=development
-flask run
-```
+  ```
+  pip install Flask
+  export FLASK_APP=microapp
+  export FLASK_ENV=development
+  flask run
+  ```
 
-* ouvrir dans un navigateur `http://localhost:5000/`
+  à ce stade ce terminal est bloqué, laissez-le tourner
+
+* ouvrez dans un navigateur <http://localhost:5000/>
+
+* choisissez une image
+* utilisez la souris pour délimiter un rectangle (appuyez dans un coin, relâchez dans le coin opposé)  
+  la position de la souris est affichée pendant ce temps
+* la surface du rectangle choisi est affichée à la fin de la sélection
 
 # les points intéressants
 
@@ -74,8 +81,8 @@ dans les templates html, on trouve par exemple
   ```
 
   est utilisé dans le template dans
-  
-  `{% if image %}` 
+
+  `{% if image %}`
 
   et
 
@@ -90,14 +97,14 @@ donc quand on a besoin par exemple d'importer `model.py`, on a le choix
 
 * on peut écrire
 
-  `from microapp.model import ...`
+  `from microapp.model import something`
 * ou encore
 
-  `from .model import ...` depuis un autre module du package `microapp`
+  `from .model import something` depuis un autre module du package `microapp`
 
 * mais par contre, **ça ne fonctionne pas si on fait**
 
-  `from model import ...`
+  `from model import something`
 
 # liens utiles
 
