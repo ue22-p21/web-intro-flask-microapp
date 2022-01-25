@@ -82,17 +82,10 @@ function showArea(event, image_id, area_id, x1, y1) {
     let [x2, y2] = getRelativeMouse(event, image_id)
 
     // post a GET request back to the same server
-    const http = new XMLHttpRequest()
     const url=`/api/image/area/${image_id}/${x1}/${y1}/${x2}/${y2}`
-    http.open("GET", url)
-    http.send()
-
-    // how to behave when the answer comes back
-    http.onreadystatechange = (event) => {
-        // the answer is a JSON encoded Python dict
-        let response = JSON.parse(http.responseText)
-        // which results in a JavaScript regular object
-        // that has the 'area' property
-        document.getElementById(area_id).innerHTML = response.area
-    }
+    fetch(url)
+        .then(response => response.json(),
+              error => alert(`networking error ${error}`))
+        .then(data => // display the 'area' property
+                  document.getElementById(area_id).innerHTML = data.area)
 }
